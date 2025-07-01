@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Thumbnail Downloader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #ff0000;
+      padding: 15px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button, a.download-btn {
+      padding: 12px 20px;
+      background-color: #ff0000;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    button:hover, a.download-btn:hover {
+      background-color: #cc0000;
+    }
+    img {
+      max-width: 100%;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+    .thumbnail-section {
+      margin-top: 20px;
+    }
+    .ad-container {
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    YouTube Thumbnail Downloader
+  </header>
+
+  <div class="container">
+    <p>Enter YouTube Video URL:</p>
+    <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=VIDEO_ID"/>
+    <button onclick="getThumbnails()">Get Thumbnails</button>
+
+    <div class="thumbnail-section" id="thumbnailSection" style="display:none;">
+      <h3>HD Image (1280x720)</h3>
+      <img id="hdThumbnail" />
+      <a id="hdDownload" class="download-btn" target="_blank">Download HD</a>
+
+      <h3>SD Image (640x480)</h3>
+      <img id="sdThumbnail" />
+      <a id="sdDownload" class="download-btn" target="_blank">Download SD</a>
+
+      <h3>Normal Image (480x360)</h3>
+      <img id="normalThumbnail" />
+      <a id="normalDownload" class="download-btn" target="_blank">Download Normal</a>
+    </div>
+  </div>
+
+  <!-- Adsterra Banner Ad Start -->
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'c53c27e30e7216dc5be3488f7184cb68',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/c53c27e30e7216dc5be3488f7184cb68/invoke.js"></script>
+  </div>
+  <!-- Adsterra Banner Ad End -->
+
+  <script>
+    function extractVideoID(url) {
+      const regex = /(?:v=|youtu\.be\/)([^&\n?#]+)/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function getThumbnails() {
+      const url = document.getElementById("youtubeUrl").value.trim();
+      const videoId = extractVideoID(url);
+
+      if (!videoId) {
+        alert("Please enter a valid YouTube video URL.");
+        return;
+      }
+
+      const hd = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      const sd = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      const normal = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+      document.getElementById("hdThumbnail").src = hd;
+      document.getElementById("sdThumbnail").src = sd;
+      document.getElementById("normalThumbnail").src = normal;
+
+      document.getElementById("hdDownload").href = hd;
+      document.getElementById("sdDownload").href = sd;
+      document.getElementById("normalDownload").href = normal;
+
+      document.getElementById("hdDownload").download = "hd_thumbnail.jpg";
+      document.getElementById("sdDownload").download = "sd_thumbnail.jpg";
+      document.getElementById("normalDownload").download = "normal_thumbnail.jpg";
+
+      document.getElementById("thumbnailSection").style.display = "block";
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Thumbnail Downloader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #ff0000;
+      padding: 15px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button, a.download-btn {
+      padding: 12px 20px;
+      background-color: #ff0000;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    button:hover, a.download-btn:hover {
+      background-color: #cc0000;
+    }
+    img {
+      max-width: 100%;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+    .thumbnail-section {
+      margin-top: 20px;
+    }
+    .ad-container {
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    YouTube Thumbnail Downloader
+  </header>
+
+  <div class="container">
+    <p>Enter YouTube Video URL:</p>
+    <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=VIDEO_ID"/>
+    <button onclick="getThumbnails()">Get Thumbnails</button>
+
+    <div class="thumbnail-section" id="thumbnailSection" style="display:none;">
+      <h3>HD Image (1280x720)</h3>
+      <img id="hdThumbnail" />
+      <a id="hdDownload" class="download-btn" target="_blank">Download HD</a>
+
+      <h3>SD Image (640x480)</h3>
+      <img id="sdThumbnail" />
+      <a id="sdDownload" class="download-btn" target="_blank">Download SD</a>
+
+      <h3>Normal Image (480x360)</h3>
+      <img id="normalThumbnail" />
+      <a id="normalDownload" class="download-btn" target="_blank">Download Normal</a>
+    </div>
+  </div>
+
+  <!-- Adsterra Banner Ad Start -->
+  <div class="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'c53c27e30e7216dc5be3488f7184cb68',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/c53c27e30e7216dc5be3488f7184cb68/invoke.js"></script>
+  </div>
+  <!-- Adsterra Banner Ad End -->
+
+  <script>
+    function extractVideoID(url) {
+      const regex = /(?:v=|youtu\.be\/)([^&\n?#]+)/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function getThumbnails() {
+      const url = document.getElementById("youtubeUrl").value.trim();
+      const videoId = extractVideoID(url);
+
+      if (!videoId) {
+        alert("Please enter a valid YouTube video URL.");
+        return;
+      }
+
+      const hd = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+      const sd = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
+      const normal = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+      document.getElementById("hdThumbnail").src = hd;
+      document.getElementById("sdThumbnail").src = sd;
+      document.getElementById("normalThumbnail").src = normal;
+
+      document.getElementById("hdDownload").href = hd;
+      document.getElementById("sdDownload").href = sd;
+      document.getElementById("normalDownload").href = normal;
+
+      document.getElementById("hdDownload").download = "hd_thumbnail.jpg";
+      document.getElementById("sdDownload").download = "sd_thumbnail.jpg";
+      document.getElementById("normalDownload").download = "normal_thumbnail.jpg";
+
+      document.getElementById("thumbnailSection").style.display = "block";
+    }
+  </script>
+</body>
+</html>
